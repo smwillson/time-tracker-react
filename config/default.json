@@ -1,0 +1,3 @@
+{
+  "mongoURI": "mongodb+srv://smwillson:Helloworld@time-tracker-react.aelz1.mongodb.net/<dbname>?retryWrites=true&w=majority"
+}
