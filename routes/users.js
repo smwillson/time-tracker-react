@@ -2,12 +2,13 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const auth = require("../middleware/auth"); // for protected routes
 const config = require("config");
 const { body, validationResult } = require("express-validator");
 
 const User = require("../models/User");
 
-// @route  POST api/user
+// @route  POST api/users
 // @desc   Register a user
 // @access Public
 router.post(
