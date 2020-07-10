@@ -1,18 +1,35 @@
 import React, { useState, useEffect, useContext, Fragment } from "react";
-import TempItem from "./TempItem";
-import TempModal from "./TempModal";
 
 import { TemperatureContext } from "../../context/temperature/TemperatureContext";
 import { ForecastContext } from "../../context/temperature/TemperatureContext";
+import { TempUnitContext } from "../../context/temperature/TemperatureContext";
 
 const Temperature = (props) => {
   const { setTemperature, temperature } = useContext(TemperatureContext);
   const { setForecast } = useContext(ForecastContext);
+  const { tempUnit } = useContext(TempUnitContext);
 
   useEffect(() => {
     getCurrentTemperature();
     //eslint-disable-next-line
   }, []);
+
+  useEffect(() => {
+    const { type } = tempUnit;
+    // console.log(temperature);
+    // console.log(type);
+    if (temperature !== null) setTemperature(convertTemp(type));
+  }, [tempUnit]);
+
+  const convertTemp = (unit) => {
+    let convertedTemp = 0;
+    if (unit === "Celsius") {
+      convertedTemp = (temperature - 32) / 1.8;
+    } else {
+      convertedTemp = temperature * 1.8 + 32;
+    }
+    return convertedTemp.toFixed(2);
+  };
 
   const getCurrentTemperature = async () => {
     try {
@@ -25,6 +42,7 @@ const Temperature = (props) => {
       const currentTemp = data.consolidated_weather[0].the_temp;
 
       //set all the component state
+      //console.log(`type of currentemp ${typeof currentTemp}`);
       setTemperature(currentTemp);
       setForecast(forecast);
       // setLoading(false);
@@ -40,10 +58,12 @@ const Temperature = (props) => {
 
   return (
     <div>
-      <a href='#temp-modal' className='modal-trigger modal-close'>
-        {temperature}
-        <i className='fas fa-thermometer-half'></i>
-      </a>
+      {temperature !== null && (
+        <a href='#temp-modal' className='modal-trigger modal-close'>
+          {temperature}
+          <i className='fas fa-thermometer-half'></i>
+        </a>
+      )}
     </div>
   );
 };
