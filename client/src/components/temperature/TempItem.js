@@ -8,7 +8,7 @@ const TempItem = (props) => {
     applicable_date,
     min_temp,
     max_temp,
-    weather_state_name,
+    weather_state_abbr,
   } = props.dayForecast;
 
   const [max_temperature, setMaxTemp] = useState(max_temp.toFixed(2));
@@ -51,14 +51,19 @@ const TempItem = (props) => {
   return (
     <div className='container'>
       <div className='row'>
+        <div className='col s3'>
+          <img
+            src={`https://www.metaweather.com/static/img/weather/${weather_state_abbr}.svg`}
+            style={{ height: "30%", width: "30%" }}
+          ></img>
+        </div>
         <div className='col s3'>{getDayOfWeek(applicable_date)}</div>
         <div className='col s3'>
-          <i className='fas fa-temperature-low'> {min_temperature}</i>
+          <i className='fas fa-temperature-low'> {min_temperature}&deg;</i>
         </div>
         <div className='col s3'>
-          <i className='fas fa-temperature-high'> {max_temperature}</i>
+          <i className='fas fa-temperature-high'> {max_temperature}&deg;</i>
         </div>
-        <div className='col s3'>{weather_state_name} </div>
       </div>
     </div>
   );
