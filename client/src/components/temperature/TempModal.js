@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import TempItem from "./TempItem";
+import TemperatureUnitForm from "./TemperatureUnitForm";
 
 import { ForecastContext } from "../../context/temperature/TemperatureContext";
 const TempModal = () => {
@@ -14,6 +15,7 @@ const TempModal = () => {
               <TempItem key={dayForecast.id} dayForecast={dayForecast} />
             ))}
         </div>
+        <TemperatureUnitForm />
       </div>
       <div className='modal-footer'>
         <a href='#!' className='modal-close waves-effect'></a>
