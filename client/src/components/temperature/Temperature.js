@@ -60,8 +60,7 @@ const Temperature = (props) => {
     <div>
       {temperature !== null && (
         <a href='#temp-modal' className='modal-trigger modal-close'>
-          {temperature}
-          <i className='fas fa-thermometer-half'></i>
+          <i className='fas fa-thermometer-half'></i> {temperature}&deg;
         </a>
       )}
     </div>
