@@ -24,7 +24,7 @@ const TempItem = (props) => {
   const convertTemp = (temperature) => {
     const { type } = tempUnit;
     let convertedTemp;
-    console.log(typeof temperature);
+
     if (type === "Celsius") {
       convertedTemp = (temperature - 32) / 1.8;
     } else {
