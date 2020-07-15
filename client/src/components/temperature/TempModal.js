@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import TempItem from "./TempItem";
 import TemperatureUnitForm from "./TemperatureUnitForm";
 
-import { ForecastContext } from "../../context/temperature/TemperatureContext";
+import { useForecastContext } from "../../context/temperature/TemperatureContext";
 const TempModal = () => {
-  const { forecast } = useContext(ForecastContext);
+  const { forecast } = useForecastContext();
   return (
     <div id='temp-modal' className='modal' style={modalStyle}>
       <div className='modal-content'>

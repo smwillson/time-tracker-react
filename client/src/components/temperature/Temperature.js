@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useContext, Fragment } from "react";
+import React, { useEffect } from "react";
 
-import { TemperatureContext } from "../../context/temperature/TemperatureContext";
-import { ForecastContext } from "../../context/temperature/TemperatureContext";
-import { TempUnitContext } from "../../context/temperature/TemperatureContext";
+import { useTemperatureContext } from "../../context/temperature/TemperatureContext";
+import { useForecastContext } from "../../context/temperature/TemperatureContext";
+import { useTempUnitContext } from "../../context/temperature/TemperatureContext";
 
 const Temperature = (props) => {
-  const { setTemperature, temperature } = useContext(TemperatureContext);
-  const { setForecast } = useContext(ForecastContext);
-  const { tempUnit } = useContext(TempUnitContext);
+  const { setTemperature, temperature } = useTemperatureContext();
+  const { setForecast } = useForecastContext();
+  const { tempUnit } = useTempUnitContext();
 
   useEffect(() => {
     getCurrentTemperature();

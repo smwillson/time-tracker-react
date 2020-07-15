@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 
-import { TempUnitContext } from "../../context/temperature/TemperatureContext";
+import { useTempUnitContext } from "../../context/temperature/TemperatureContext";
 
 const TemperatureUnitForm = () => {
-  const { tempUnit, setTempUnit } = useContext(TempUnitContext);
+  const { tempUnit, setTempUnit } = useTempUnitContext();
   const { type } = tempUnit;
   const onChange = (event) => {
     setTempUnit({

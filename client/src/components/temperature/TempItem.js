@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useContext, useRef } from "react";
-import { TempUnitContext } from "../../context/temperature/TemperatureContext";
+import React, { useEffect, useState, useRef } from "react";
+import { useTempUnitContext } from "../../context/temperature/TemperatureContext";
 const TempItem = (props) => {
-  const { tempUnit } = useContext(TempUnitContext);
+  const { tempUnit } = useTempUnitContext();
   const didMountRef = useRef(false);
 
   const {
